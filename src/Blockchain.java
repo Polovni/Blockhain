@@ -1,13 +1,18 @@
+import com.google.gson.GsonBuilder;
+
+import java.util.ArrayList;
+
 public class Blockchain {
-    public static void main(String[] args) {
 
-        Block genesisBlock = new Block("Hi im the first block", "0");
-        System.out.println("Hash for block 1:" + genesisBlock.hash);
+        public static ArrayList<Block> blockchain = new ArrayList<>();
 
-        Block secondBlock = new Block("Hi im the second block", genesisBlock.hash);
-        System.out.println("Hash for block 2:" + secondBlock.hash);
+        public static void main(String[] args) {
+            blockchain.add(new Block("Hi im the first block", "0"));
+            blockchain.add(new Block("Hi im the second block", blockchain.getLast().hash));
+            blockchain.add(new Block("Hi im the third block", blockchain.getLast().hash));
 
-        Block thirdBlock = new Block("Hi im the third block", secondBlock.hash);
-        System.out.println("Hash for block 3:" + thirdBlock.hash);
-    }
+            String blockchainJson = new GsonBuilder().setPrettyPrinting().create().toJson(blockchain);
+            System.out.println(blockchainJson);
+        }
+
 }
