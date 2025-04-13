@@ -27,4 +27,14 @@ public class Transaction {
                 StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient) + Float.toString(value) + sequence
         );
     }
+
+    public void generateSignature(PrivateKey privateKey) {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient) + Float.toString(value);
+        signature = StringUtil.applyECDSASig(privateKey, data);
+    }
+
+    public boolean verifySignature() {
+        String data = StringUtil.getStringFromKey(sender) + StringUtil.getStringFromKey(recipient) + Float.toString(value);
+        return StringUtil.verifyECDSASig(sender, data, signature);
+    }
 }
