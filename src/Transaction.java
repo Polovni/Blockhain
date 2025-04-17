@@ -49,7 +49,7 @@ public class Transaction {
         }
 
         if(getInputsValue() < Blockchain.minimumTransaction) {
-            System.out.println("#Transaction Inputs to small: " + getInputsValue());
+            System.out.println("#Transaction Inputs too small: " + getInputsValue());
             return false;
         }
 
@@ -70,7 +70,7 @@ public class Transaction {
         return true;
     }
 
-    private float getInputsValue() {
+    public float getInputsValue() {
         float total = 0;
         for(TransactionInput input : inputs) {
             if(input.UTXO == null) continue;
