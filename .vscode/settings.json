@@ -1,0 +1,7 @@
+{
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "/Users/Luka/Downloads/bcprov-jdk18on-1.80.jar",
+        "/Users/Luka/Downloads/gson-2.6.2.jar"
+    ]
+}
